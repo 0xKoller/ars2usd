@@ -13,7 +13,10 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://www.mercadolibre.com.ar/*"],
+      "matches": [
+        "https://www.mercadolibre.com.ar/*",
+        "https://articulo.mercadolibre.com.ar/*"
+      ],
       "run_at": "document_end",
       "js": ["scripts/content.js"]
     },
