@@ -10,9 +10,14 @@ async function logData() {
     "https://dolar-api-argentina.vercel.app/v1/dolares/blue"
   );
   const usd = await response.json();
-  let priceTag = document.querySelector(".andes-money-amount__fraction");
+  console.log(usd);
+  let priceTag = document.querySelector(
+    ".ui-pdp-price__second-line .andes-money-amount__fraction"
+  );
   priceTag = quitarFormatoNumero(priceTag.innerHTML);
+  console.log(priceTag);
   priceTag = priceTag / usd.venta;
+  console.log(priceTag);
   const contenedor = document.querySelector(".ui-pdp-price__second-line");
   const elemento = document.createElement("span");
   elemento.style.color = "#999";
