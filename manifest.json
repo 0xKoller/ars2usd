@@ -2,16 +2,20 @@
   "manifest_version": 3,
   "name": "Ars2Usd",
   "description": "Equivalencia en dolar blue del precio listado en MeLi.",
-  "version": "0.0.0.1",
-  "content_security_policy": {
-    "extension_pages": "default-src 'self'"
+  "version": "0.0.0.2",
+  "permissions": ["activeTab", "scripting"],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "Clic para mostrar precio en USD 😀"
   },
   "content_scripts": [
     {
       "matches": ["https://www.mercadolibre.com.ar/*"],
       "run_at": "document_end",
-      "js": ["scripts/content.js"],
-      "css": ["scripts/content.css"]
+      "js": ["scripts/content.js"]
     },
     {
       "matches": ["https://listado.mercadolibre.com.ar/*"],

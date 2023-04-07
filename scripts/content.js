@@ -15,7 +15,8 @@ async function logData() {
   priceTag = priceTag / usd.venta;
   const contenedor = document.querySelector(".ui-pdp-price__second-line");
   const elemento = document.createElement("span");
-  elemento.className = "usd2ars";
+  elemento.style.color = "#999";
+  elemento.style.marginLeft = "3px";
   elemento.innerHTML = `≈ U$D ${priceTag.toFixed(2)}`;
   contenedor.appendChild(elemento);
 }
