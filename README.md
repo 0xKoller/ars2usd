@@ -14,3 +14,7 @@ Para descargar e instalar esta extensión en su navegador, siga los siguientes p
 ¡Listo! Para utilizarla, simplemente abra MercadoLibre y busque un producto. Verá el precio del producto en pesos argentinos (ARS) junto a su equivalente en dólares estadounidenses (USD) en tiempo real en la misma página.
 
 
+## Bugs & Nuevas funcionalidades
+Si tienes bugs para reportar o funcionalidades que sugerir ve al siguiente [link](https://github.com/0xKoller/ars2usd/issues).
+
+🔗 Todos mis links => https://linktr.ee/0xKoller
