@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Ars2Usd",
   "description": "Equivalencia en dolar blue del precio listado en MeLi.",
-  "version": "0.0.0.2",
+  "version": "0.0.0.3",
   "permissions": ["activeTab", "scripting"],
   "background": {
     "service_worker": "background.js",
