@@ -5,28 +5,13 @@ function quitarFormatoNumero(numeroConFormato) {
   return numero;
 }
 
-function formatearFechaHora(fechaHora) {
-  let fecha = new Date(fechaHora);
-  let opciones = {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-    second: "numeric",
-    hour12: false,
-  };
-  let fechaFormateada = fecha.toLocaleString("es-AR", opciones);
-  return fechaFormateada;
-}
-
 function fechaHoraTextoASeparado(fechaHoraTexto) {
   // Convertir la fecha y hora de texto a un objeto Date
   let fechaHoraObj = new Date(fechaHoraTexto);
   // Obtener los componentes de la fecha
   let dia = fechaHoraObj.getDate();
   let mes = fechaHoraObj.getMonth() + 1; // Los meses en JavaScript empiezan en 0 (enero)
-  let anio = fechaHoraObj.getFullYear();
+  let anio = fechaHoraObj.getFullYear() % 100; // Obtiene los últimos dos dígitos del año
   // Obtener los componentes de la hora
   let horas = fechaHoraObj.getHours();
   let minutos = fechaHoraObj.getMinutes();
@@ -69,21 +54,26 @@ async function logData() {
   contenedor.appendChild(elemento);
 
   let numero = obtenerMLA();
+
   const responseUp = await fetch(
     `https://api.mercadolibre.com/items?ids=${numero}`
   );
   const dataItem = await responseUp.json();
+  if (dataItem[0].code != 404) {
+    let fechaHora = dataItem[0].body.last_updated;
+    let fecha = new Date(fechaHora.replace("Z", "")); // quita la 'Z' para evitar problemas con la zona horaria
+    let fechaHoraSeparada = fechaHoraTextoASeparado(fecha);
 
-  let fechaHora = dataItem[0].body.last_updated;
-  let fecha = new Date(fechaHora.replace("Z", "")); // quita la 'Z' para evitar problemas con la zona horaria
-  let fechaHoraSeparada = fechaHoraTextoASeparado(fecha);
+    const subtitle = document.querySelector("div.ui-pdp-header__subtitle");
+    subtitle.style.display = "flex";
+    subtitle.style.flexDirection = "column";
+    const lastUpdate = document.createElement("span");
+    lastUpdate.style.flexDirection;
+    lastUpdate.className = "ui-pdp-subtitle";
+    lastUpdate.innerHTML = `Ult. Actualización: ${fechaHoraSeparada.fecha} - ${fechaHoraSeparada.hora}`;
 
-  const subtitle = document.querySelector("div.ui-pdp-header__subtitle");
-  const lastUpdate = document.createElement("span");
-  lastUpdate.className = "ui-pdp-subtitle";
-  lastUpdate.innerHTML = `| Ult. Act. ${fechaHoraSeparada.fecha} - ${fechaHoraSeparada.hora}`;
-  lastUpdate.style.marginLeft = "5px";
-  subtitle.appendChild(lastUpdate);
+    subtitle.appendChild(lastUpdate);
+  }
 }
 
 logData();
