@@ -14,6 +14,7 @@ function fechaHoraTextoASeparado(fechaHoraTexto) {
   let anio = fechaHoraObj.getFullYear() % 100; // Obtiene los últimos dos dígitos del año
   // Obtener los componentes de la hora
   let horas = fechaHoraObj.getHours();
+  horas -= 3;
   let minutos = fechaHoraObj.getMinutes();
   // Unir los componentes en un string con separadores "/"
   let fechaSeparada =
