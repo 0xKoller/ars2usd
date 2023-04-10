@@ -4,3 +4,5 @@ chrome.action.onClicked.addListener((tab) => {
     files: ["scripts/content.js"],
   });
 });
+
+chrome.storage.local.set({ justUpdated: 1 });
