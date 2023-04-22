@@ -2,6 +2,7 @@
   color: #999;
   margin-left: 10px;
   position: relative;
+  cursor: pointer;
 }
 
 .tooltip-text {
