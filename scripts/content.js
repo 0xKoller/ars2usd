@@ -15,6 +15,9 @@ function fechaHoraTextoASeparado(fechaHoraTexto) {
   // Obtener los componentes de la hora
   let horas = fechaHoraObj.getHours();
   horas -= 3;
+  if (horas < 0) {
+    horas += 24;
+  }
   let minutos = fechaHoraObj.getMinutes();
   // Unir los componentes en un string con separadores "/"
   let fechaSeparada =
@@ -22,6 +25,7 @@ function fechaHoraTextoASeparado(fechaHoraTexto) {
   // Unir los componentes de la hora en un string con separadores ":"
   let horaSeparada = ("0" + horas).slice(-2) + ":" + ("0" + minutos).slice(-2);
   // Devolver un objeto que contenga tanto la fecha como la hora separadas
+
   return { fecha: fechaSeparada, hora: horaSeparada };
 }
 
@@ -49,10 +53,15 @@ async function logData() {
   priceTag = priceTag / usd.venta;
   const contenedor = document.querySelector(".ui-pdp-price__second-line");
   const elemento = document.createElement("span");
-  elemento.style.color = "#999";
-  elemento.style.marginLeft = "3px";
+  elemento.classList.add("tooltip");
   elemento.innerHTML = `≈ U$D ${priceTag.toFixed(2)}`;
   contenedor.appendChild(elemento);
+
+  // Tooltip para saber el dolar que se toma
+  const tooltip = document.createElement("div");
+  tooltip.classList.add("tooltip-text");
+  tooltip.innerHTML = `$${usd.venta}`;
+  elemento.appendChild(tooltip);
 
   let numero = obtenerMLA();
 
@@ -77,4 +86,9 @@ async function logData() {
   }
 }
 
-logData();
+// Este timeout es necesario debido a que MeLi no devuelve la pagina cargada del todo
+// sino que carga progresivamente, por ende se estima que en 1seg ya termino de cargar
+// bloquear la carga por completo evitaria que obtenga notificaciones y demas.
+setTimeout(function () {
+  logData();
+}, 1000);
