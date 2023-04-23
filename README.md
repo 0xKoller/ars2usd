@@ -14,9 +14,9 @@ Solo debes de instalarla mediante el siguiente [link](https://chrome.google.com/
 
 ![](https://github.com/0xKoller/ars2usd/blob/master/images/ultAct.png)
 
-- Acceso rapido a los mas vendidos.
+- Acceso rapido a los mas vendidos y mejora de estilos en el header.
 
-![](https://github.com/0xKoller/ars2usd/blob/master/images/most_sold.png)
+![](https://github.com/0xKoller/ars2usd/blob/master/images/header-cropped.png)
 
 - Tooltip para observar a que valor se esta tomando el dolar.
 
