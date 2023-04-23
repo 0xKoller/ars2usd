@@ -22,6 +22,10 @@ Solo debes de instalarla mediante el siguiente [link](https://chrome.google.com/
 
 ![](https://github.com/0xKoller/ars2usd/blob/master/images/tooltip.png)
 
+- Info del vendedor
+
+![](https://github.com/0xKoller/ars2usd/blob/master/images/sellerInfo.png)
+
 ## Bugs & Nuevas funcionalidades
 Si tienes bugs para reportar o funcionalidades que sugerir ve al siguiente [link](https://github.com/0xKoller/ars2usd/issues).
 
