@@ -91,6 +91,8 @@ function styling() {
   numCart.style.top = "-3px";
   const user = document.querySelector("span.nav-header-usermenu-wrapper");
   user.style.alignItems = "center";
+  const userOptions = document.querySelector("nav#nav-header-menu");
+  userOptions.style.alignItems = "center";
 }
 
 // Estilos enchanced ✨
