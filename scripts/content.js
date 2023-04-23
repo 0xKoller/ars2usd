@@ -131,6 +131,20 @@ async function logData() {
 
       const historic = document.createElement("div");
       historic.classList.add("data");
+      const per_claim =
+        (dataSeller.seller.seller_reputation.metrics.claims.value * 100) /
+        dataSeller.seller.seller_reputation.metrics.sales.completed;
+      const per_cancelled_period =
+        (dataSeller.seller.seller_reputation.metrics.cancellations.value *
+          100) /
+        dataSeller.seller.seller_reputation.metrics.sales.completed;
+
+      const per_completed =
+        (dataSeller.seller.seller_reputation.transactions.completed * 100) /
+        dataSeller.seller.seller_reputation.transactions.total;
+      const per_cancelled =
+        (dataSeller.seller.seller_reputation.transactions.canceled * 100) /
+        dataSeller.seller.seller_reputation.transactions.total;
       historic.innerHTML = `
     <p class="data-title"> Estadísticas de ${periodo.replace(/\D/g, "")} días
     </p>
@@ -144,12 +158,20 @@ async function logData() {
       <div>
       <p class="data-name">Reclamos: <p class="data-value">${formateoNumero(
         dataSeller.seller.seller_reputation.metrics.claims.value
-      )}</p></p>
+      )}</p>
+      <p class="data-value-sub"> ≈ ${per_claim.toFixed(2)}
+      %
+      </p>
+      </p>
       </div>
       <div>
       <p class="data-name">Cancelaciones: <p class="data-value">${formateoNumero(
         dataSeller.seller.seller_reputation.metrics.cancellations.value
-      )}</p></p>
+      )}</p>
+      <p class="data-value-sub"> ≈ ${per_cancelled_period.toFixed(2)}
+      %
+      </p>
+      </p>
     </div>
       </div>
 
@@ -165,12 +187,20 @@ async function logData() {
       <div>
       <p class="data-name">Transac. Completadas: <p class="data-value">${formateoNumero(
         dataSeller.seller.seller_reputation.transactions.completed
-      )}</p></p>
+      )}</p>
+      <p class="data-value-sub"> ≈ ${per_completed.toFixed(2)}
+      %
+      </p>
+      </p>
       </div>
       <div>
       <p class="data-name">Transac. Canceladas: <p class="data-value">${formateoNumero(
         dataSeller.seller.seller_reputation.transactions.canceled
-      )}</p></p>
+      )}</p>
+      <p class="data-value-sub"> ≈ ${per_cancelled.toFixed(2)}
+      %
+      </p>
+      </p>
     </div>
     </div>
     `;
