@@ -1,15 +1,35 @@
+div.ui-pdp-header__subtitle {
+  display: flex;
+  flex-direction: column;
+}
+
 .tooltip {
   color: #999;
   margin-left: 10px;
   position: relative;
   cursor: pointer;
+  display: flex;
+}
+
+.icon {
+  margin-left: 2px;
+  transform: translateY(-30%);
+}
+
+.icon svg {
+  fill: #999;
+  transition: fill 500ms ease;
+}
+
+.icon svg:hover {
+  fill: #000;
 }
 
 .tooltip-text {
   position: absolute;
-  visibility: hidden;
   background-color: #000;
-  color: rgb(78, 182, 68);
+  visibility: hidden;
+  color: #fff;
   font-weight: bold;
   padding: 10px;
   border-radius: 5px;
@@ -17,24 +37,81 @@
   width: max-content;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
   z-index: 999;
-  top: -10px;
+  top: -1px;
   left: 50%;
   transform: translateY(-100%);
 }
 
-.tooltip-text::before {
-  content: "";
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%) rotate(45deg);
-  width: 15px;
-  height: 15px;
-  background-color: #000;
-  border-radius: 3px 0 0 0;
-  box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.3);
+.icon:hover .tooltip-text {
+  visibility: visible;
 }
 
-.tooltip:hover .tooltip-text {
-  visibility: visible;
+.nav-bounds .nav-menu-cp.nav-menu-cp-logged:before {
+  display: flex;
+  align-items: center;
+}
+
+.andes-pagination li {
+  background-color: white;
+  border-radius: 5px;
+  transition: background-color 500ms ease;
+}
+
+.andes-pagination li:hover {
+  background-color: #e7e7e7;
+  transition: background-color 500ms ease;
+}
+
+.andes-pagination .andes-pagination__page-count {
+  background-color: transparent;
+}
+
+.andes-pagination .andes-pagination__page-count:hover {
+  background-color: transparent;
+}
+
+.seller-info-button {
+  border-radius: 5px;
+  margin: 1vh 0;
+}
+
+.ui-box-component a {
+  margin: 1vh 0;
+}
+
+.historic-container p {
+  display: inline;
+}
+
+.seller-name p {
+  display: inline;
+}
+
+.seller-plus {
+  margin: 1vh 0;
+  background-color: #f3f3f3;
+  border-radius: 5px;
+  padding: 0.5vw;
+}
+
+.data-title {
+  margin-top: 0.5vh;
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-decoration: underline;
+}
+
+.data-name {
+  font-weight: bold;
+}
+
+.year {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.all-time {
+  display: flex;
+  flex-wrap: wrap;
 }
