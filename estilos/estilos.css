@@ -27,7 +27,7 @@ div.ui-pdp-header__subtitle {
 
 .tooltip-text {
   position: absolute;
-  background-color: #000;
+  background-image: linear-gradient(45deg, #65b864, #5a65c9);
   visibility: hidden;
   color: #fff;
   font-weight: bold;
@@ -83,6 +83,12 @@ div.ui-pdp-header__subtitle {
   display: inline;
 }
 
+.seller-name {
+  margin: 0.5vh 0;
+  display: flex;
+  flex-direction: column;
+}
+
 .seller-name p {
   display: inline;
 }
@@ -98,7 +104,19 @@ div.ui-pdp-header__subtitle {
   margin-top: 0.5vh;
   font-weight: bold;
   font-size: 1.2rem;
-  text-decoration: underline;
+
+  color: transparent; /* Ocultar el color de texto original */
+  background-clip: text; /* Permitir que el fondo atraviese el texto */
+  background-image: linear-gradient(
+    45deg,
+    #65b864,
+    #5a65c9
+  ); /* Aplicar un gradiente de colores */
+
+  /* Establecer el color de texto */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #5a65c9;
 }
 
 .data-name {
