@@ -86,6 +86,16 @@ async function logData() {
   }
 }
 
+function styling() {
+  const numCart = document.querySelector("span.nav-icon-cart-quantity");
+  numCart.style.top = "-3px";
+  const user = document.querySelector("span.nav-header-usermenu-wrapper");
+  user.style.alignItems = "center";
+}
+
+// Estilos enchanced ✨
+styling();
+
 // Este timeout es necesario debido a que MeLi no devuelve la pagina cargada del todo
 // sino que carga progresivamente, por ende se estima que en 1seg ya termino de cargar
 // bloquear la carga por completo evitaria que obtenga notificaciones y demas.
