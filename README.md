@@ -1,6 +1,7 @@
 # ARS2USD 💸
 
 ## Index
+
 [📜Descripción.](#descripción)
 
 [🍀Funcionalidades Extras.](#funcionalidades-extras)
@@ -15,7 +16,7 @@
 
 ## Descripción
 
-Esta extensión convierte el precio mostrado en MercadoLibre a su equivalente en dólar blue. 
+Esta extensión convierte el precio mostrado en MercadoLibre a su equivalente en dólar blue.
 
 ![](https://github.com/0xKoller/ars2usd/blob/master/images/ejempoUSD2.png)
 
@@ -42,16 +43,17 @@ Solo debes de instalarla mediante el siguiente [link](https://chrome.google.com/
 ![](https://github.com/0xKoller/ars2usd/blob/master/images/sellerInfo.png)
 
 ## Upcoming Features
-- [X] ~~Informacion del Vendedor.~~
-- [X] ~~Info de cuanto se toma el dolar.~~
-- [X] ~~Mejoras de estilos.~~
-- [X] Informacion de vendedor en publicaciones Multi-Vendedores.
-- [X] Opciones para cambiar el valor del dolar que se toma.
+
+- [x] ~~Informacion del Vendedor.~~
+- [x] ~~Info de cuanto se toma el dolar.~~
+- [x] ~~Mejoras de estilos.~~
+- [x] Informacion de vendedor en publicaciones Multi-Vendedores 🔜 Ver 1.1.0
+- [x] Opciones para cambiar el valor del dolar que se toma.
 
 ## Contacto
+
 Aca te dejo un [link](https://linktr.ee/0xKoller) en el cual vas a tener acceso a todas mis RRSS 😀
 
 ## Bugs & Nuevas funcionalidades
+
 Si tienes bugs para reportar o funcionalidades que sugerir ve al siguiente [link](https://github.com/0xKoller/ars2usd/issues) 🐛
-
-
