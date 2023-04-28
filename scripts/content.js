@@ -113,7 +113,10 @@ async function logData() {
       const getLink = getNickName.querySelector("a.ui-pdp-media__action");
       let url = getLink.href;
       const indexSlash = url.lastIndexOf("/");
-      const indexQuestion = url.lastIndexOf("?");
+      let indexQuestion = url.lastIndexOf("?");
+      if (indexQuestion === -1) {
+        indexQuestion = url.length;
+      }
       const nickname = url.substring(indexSlash + 1, indexQuestion);
       const responseSeller = await fetch(
         `https://api.mercadolibre.com/sites/MLA/search?nickname=${nickname}`
