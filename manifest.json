@@ -3,7 +3,7 @@
   "name": "Ars2Usd",
   "description": "Equivalencia en USD del producto listado en MercadoLibre, información del vendedor y mejoras de estilos.",
   "version": "1.0.1",
-  "permissions": ["activeTab"],
+  "permissions": [],
   "action": {
     "default_popup": "popup.html"
   },
