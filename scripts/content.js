@@ -46,6 +46,7 @@ function formateoNumero(numeroSinFormato) {
 }
 
 async function logData() {
+  // Get USD price
   const response = await fetch(
     "https://dolar-api-argentina.vercel.app/v1/dolares/blue"
   );
@@ -81,9 +82,9 @@ async function logData() {
     tooltip.innerHTML = `$${usd.venta}`;
     icon.appendChild(tooltip);
   }
-
   let numero = obtenerMLA();
   if (numero != "null") {
+    // Data product
     const responseUp = await fetch(
       `https://api.mercadolibre.com/items?ids=${numero}`
     );
@@ -102,24 +103,30 @@ async function logData() {
       lastUpdate.innerHTML = `Ult. Actualización: ${fechaHoraSeparada.fecha} - ${fechaHoraSeparada.hora}`;
       subtitle.appendChild(lastUpdate);
 
+      // Info seller
       const responseSeller = await fetch(
         `https://api.mercadolibre.com/sites/MLA/search?seller_id=${dataItem[0].body.seller_id}`
       );
       const dataSeller = await responseSeller.json();
-      console.log(dataSeller);
+
       // Container seller
       const box = document.querySelector(".ui-seller-info");
       const sellerPlus = document.createElement("div");
       sellerPlus.classList.add("seller-plus");
+
+      // Seller name
       const seller_name = document.createElement("div");
       seller_name.classList.add("seller-name");
       seller_name.innerHTML = `<p  class="data-title">Nombre</p><p> ${dataSeller.seller.nickname}</p>
       
       `;
+
+      // Seller loc
       const seller_loc = document.createElement("div");
       seller_loc.classList.add("seller-name");
       seller_loc.innerHTML = `<p  class="data-title">Ubicación</p><p> ${dataItem[0].body.seller_address.city.name}, ${dataItem[0].body.seller_address.state.name}</p>`;
 
+      // Seller registered @
       const seller_registered = document.createElement("div");
       seller_registered.classList.add("seller-name");
       const seller_registered_date = fechaHoraTextoASeparado(
@@ -131,6 +138,8 @@ async function logData() {
 
       const historic = document.createElement("div");
       historic.classList.add("data");
+
+      // Calc Percentages
       const per_claim =
         (dataSeller.seller.seller_reputation.metrics.claims.value * 100) /
         dataSeller.seller.seller_reputation.metrics.sales.completed;
@@ -138,13 +147,13 @@ async function logData() {
         (dataSeller.seller.seller_reputation.metrics.cancellations.value *
           100) /
         dataSeller.seller.seller_reputation.metrics.sales.completed;
-
       const per_completed =
         (dataSeller.seller.seller_reputation.transactions.completed * 100) /
         dataSeller.seller.seller_reputation.transactions.total;
       const per_cancelled =
         (dataSeller.seller.seller_reputation.transactions.canceled * 100) /
         dataSeller.seller.seller_reputation.transactions.total;
+
       historic.innerHTML = `
     <p class="data-title"> Estadísticas de ${periodo.replace(/\D/g, "")} días
     </p>
