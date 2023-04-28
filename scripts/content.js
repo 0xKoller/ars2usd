@@ -230,8 +230,8 @@ function styling() {
   // Pin location
   const pin = document.querySelector(".nav-bounds");
 
-  // Pagination
-  const pagination = document.querySelector(".andes-pagination");
+  // Promo card
+  const promo = document.querySelector(".ui-search-item__ad-label--blue");
 }
 
 // Estilos enchanced ✨

@@ -11,18 +11,10 @@
     {
       "matches": [
         "https://www.mercadolibre.com.ar/*",
-        "https://articulo.mercadolibre.com.ar/*"
-      ],
-      "run_at": "document_end",
-      "js": ["scripts/content.js"]
-    },
-    {
-      "matches": [
-        "https://www.mercadolibre.com.ar/*",
         "https://*.mercadolibre.com.ar/*"
       ],
       "run_at": "document_end",
-      "js": ["scripts/most_sold.js"]
+      "js": ["scripts/content.js", "scripts/most_sold.js"]
     },
     {
       "matches": ["<all_urls>"],
