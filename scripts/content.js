@@ -6,25 +6,19 @@ function quitarFormatoNumero(numeroConFormato) {
 }
 
 function fechaHoraTextoASeparado(fechaHoraTexto) {
-  // Convertir la fecha y hora de texto a un objeto Date
   let fechaHoraObj = new Date(fechaHoraTexto);
-  // Obtener los componentes de la fecha
   let dia = fechaHoraObj.getDate();
-  let mes = fechaHoraObj.getMonth() + 1; // Los meses en JavaScript empiezan en 0 (enero)
+  let mes = fechaHoraObj.getMonth() + 1;
   let anio = ("0" + (fechaHoraObj.getFullYear() % 100)).slice(-2);
-  // Obtener los componentes de la hora
   let horas = fechaHoraObj.getHours();
   horas -= 3;
   if (horas < 0) {
     horas += 24;
   }
   let minutos = fechaHoraObj.getMinutes();
-  // Unir los componentes en un string con separadores "/"
   let fechaSeparada =
     ("0" + dia).slice(-2) + "/" + ("0" + mes).slice(-2) + "/" + anio.toString();
-  // Unir los componentes de la hora en un string con separadores ":"
   let horaSeparada = ("0" + horas).slice(-2) + ":" + ("0" + minutos).slice(-2);
-  // Devolver un objeto que contenga tanto la fecha como la hora separadas
 
   return { fecha: fechaSeparada, hora: horaSeparada };
 }
@@ -92,7 +86,7 @@ async function logData() {
     const dataItem = await responseUp.json();
     if (dataItem[0].code != 404) {
       let fechaHora = dataItem[0].body.last_updated;
-      let fecha = new Date(fechaHora.replace("Z", "")); // quita la 'Z' para evitar problemas con la zona horaria
+      let fecha = new Date(fechaHora.replace("Z", ""));
       let fechaHoraSeparada = fechaHoraTextoASeparado(fecha);
       // Containter Vend+Act.
       const subtitle = document.querySelector("div.ui-pdp-header__subtitle");
@@ -132,9 +126,7 @@ async function logData() {
     // Seller name
     const seller_name = document.createElement("div");
     seller_name.classList.add("seller-name");
-    seller_name.innerHTML = `<p  class="data-title">Nombre</p><p> ${dataSeller.seller.nickname}</p>
-      
-      `;
+    seller_name.innerHTML = `<p  class="data-title">Nombre</p><p> ${dataSeller.seller.nickname}</p>`;
 
     // Seller loc
     const seller_loc = document.createElement("div");

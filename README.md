@@ -47,7 +47,7 @@ Solo debes de instalarla mediante el siguiente [link](https://chrome.google.com/
 - [x] ~~Informacion del Vendedor.~~
 - [x] ~~Info de cuanto se toma el dolar.~~
 - [x] ~~Mejoras de estilos.~~
-- [x] Informacion de vendedor en publicaciones Multi-Vendedores 🔜 Ver 1.1.0
+- [x] ~~Informacion de vendedor en publicaciones Multi-Vendedores.~~
 - [x] Opciones para cambiar el valor del dolar que se toma.
 
 ## Contacto
