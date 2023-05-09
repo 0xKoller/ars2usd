@@ -152,18 +152,25 @@ async function logData() {
     historic.classList.add("data");
 
     // Calc Percentages
-    const per_claim =
-      (dataSeller.seller.seller_reputation.metrics.claims.value * 100) /
-      dataSeller.seller.seller_reputation.metrics.sales.completed;
-    const per_cancelled_period =
-      (dataSeller.seller.seller_reputation.metrics.cancellations.value * 100) /
-      dataSeller.seller.seller_reputation.metrics.sales.completed;
-    const per_completed =
-      (dataSeller.seller.seller_reputation.transactions.completed * 100) /
-      dataSeller.seller.seller_reputation.transactions.total;
-    const per_cancelled =
-      (dataSeller.seller.seller_reputation.transactions.canceled * 100) /
-      dataSeller.seller.seller_reputation.transactions.total;
+    let per_claim = 0;
+    let per_cancelled_period = 0;
+    let per_completed = 0;
+    let per_cancelled = 0;
+    if (dataSeller.seller.seller_reputation.metrics.sales.completed > 0) {
+      per_claim =
+        (dataSeller.seller.seller_reputation.metrics.claims.value * 100) /
+        dataSeller.seller.seller_reputation.metrics.sales.completed;
+      per_cancelled_period =
+        (dataSeller.seller.seller_reputation.metrics.cancellations.value *
+          100) /
+        dataSeller.seller.seller_reputation.metrics.sales.completed;
+      per_completed =
+        (dataSeller.seller.seller_reputation.transactions.completed * 100) /
+        dataSeller.seller.seller_reputation.transactions.total;
+      per_cancelled =
+        (dataSeller.seller.seller_reputation.transactions.canceled * 100) /
+        dataSeller.seller.seller_reputation.transactions.total;
+    }
 
     historic.innerHTML = `
     <p class="data-title"> Estadísticas de ${periodo.replace(/\D/g, "")} días

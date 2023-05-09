@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Ars2Usd",
   "description": "Equivalencia en USD del producto listado en MercadoLibre, información del vendedor y mejoras de estilos.",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "permissions": ["storage"],
   "action": {
     "default_popup": "popup.html"
@@ -14,7 +14,7 @@
         "https://articulo.mercadolibre.com.ar/*",
         "https://listado.mercadolibre.com.ar/*"
       ],
-      "run_at": "document_end",
+      "run_at": "document_idle",
       "js": ["scripts/content.js", "scripts/most_sold.js"],
       "css": ["estilos/estilos.css"]
     }
