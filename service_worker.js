@@ -19,3 +19,9 @@ async function getValues() {
 }
 
 getValues();
+
+self.addEventListener("activate", function () {
+  setInterval(function () {
+    getValues();
+  }, 60 * 60 * 1000);
+});
