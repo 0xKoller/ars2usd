@@ -1,7 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
 }
 
 body {
@@ -9,21 +11,26 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  width: 350px;
-  height: 200px;
-  padding: 1vw;
-  background: #f7f7f7;
+  width: 400px;
+  background: #fcfcfc;
 }
 
-p {
-  margin: 1vh 0;
+h1 {
+  text-align: start;
 }
 
 .links {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 5vh 0.5vh;
-  margin-bottom: 2vh;
+  display: flex;
+  justify-content: space-between;
+  margin: 5vh 0;
+}
+
+.links a {
+  margin: 0px 1.5vw;
+}
+
+main {
+  height: 100%;
 }
 
 a {
@@ -45,28 +52,29 @@ a:hover {
   color: #5a65c9;
 }
 
-.disabled {
-  color: rgb(203, 203, 203);
-  pointer-events: none;
-  font-style: italic;
+.value {
+  display: grid;
+  grid-template-areas:
+    "divisa divisa"
+    "select save";
+  grid-template-rows: 1fr 1fr;
+  column-gap: 2vw;
 }
 
-.disabled:visited {
-  color: rgb(203, 203, 203);
+.value p {
+  grid-area: divisa;
 }
 
-.logo {
-  border-radius: 5px;
-  height: 70%;
+#currency {
+  grid-area: select;
 }
 
-.info-popup {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.data-popup {
-  text-align: justify;
-  padding-right: 2vw;
+.value button {
+  width: 80%;
+  grid-area: save;
+  background: linear-gradient(45deg, #65b864, #5a65c9);
+  border: 0px;
+  border-radius: 5vh;
+  color: white;
+  font-weight: bold;
 }

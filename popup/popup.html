@@ -8,34 +8,30 @@
     <title>Info</title>
   </head>
   <body>
-    <div class="info-popup">
-      <div class="data-popup">
-        <h1>Ars2Usd</h1>
-        <p>
-          La extensión te permite ver el equivalente del precio de un producto
-          en dólares en MercadoLibre, además de ofrecer funcionalidades
-          adicionales.
-        </p>
+    <main>
+      <h1>Ars2Usd</h1>
+      <div class="value">
+        <p>Divisa seleccionada: <span id="selected_currency"></span></p>
+
+        <select id="currency">
+          <option value="usd_blue" selected>Dolar Blue</option>
+          <option value="usd_of">Dolar Oficial</option>
+          <option value="usd_tur">Dolar Turista</option>
+        </select>
+        <button id="save">Guardar</button>
       </div>
-    </div>
-    <div class="value">
-      <p>Divisa seleccionada: <span id="selected_currency"></span></p>
-      <select id="currency">
-        <option value="usd_blue" selected>Dolar Blue</option>
-        <option value="usd_of">Dolar Oficial</option>
-        <option value="usd_tur">Dolar Turista</option>
-      </select>
-      <button id="save">Guardar</button>
-    </div>
-    <div class="links">
-      <a href="https://linktr.ee/0xKoller" target="_blank">🔗 Redes Sociales</a>
-      <a href="https://github.com/0xKoller/ars2usd" target="_blank"
-        >📁 Codigo</a
-      >
-      <a href="https://github.com/0xKoller/ars2usd/issues" target="_blank"
-        >🐛 Reportar Problema</a
-      >
-    </div>
+      <div class="links">
+        <a href="https://linktr.ee/0xKoller" target="_blank"
+          >🔗 Redes Sociales</a
+        >
+        <a href="https://github.com/0xKoller/ars2usd" target="_blank"
+          >📁 Codigo</a
+        >
+        <a href="https://github.com/0xKoller/ars2usd/issues" target="_blank"
+          >🐛 Reportar Problema</a
+        >
+      </div>
+    </main>
     <script src="./popup.js"></script>
   </body>
 </html>

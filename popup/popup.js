@@ -24,15 +24,18 @@ const getKeyName = async () => {
 const getText = (currency) => {
   switch (currency) {
     case "usd_blue":
-      return "Dolar Blue";
+      return { color: "5A65C9", text: "Blue" };
     case "usd_of":
-      return "Dolar Oficial";
+      return { color: "3A8842", text: "Oficial" };
     case "usd_tur":
-      return "Dolar Turista";
+      return { color: "D68235", text: "Turista" };
   }
 };
 
 const span = document.getElementById("selected_currency");
 const a = getKeyName().then((e) => {
-  span.innerHTML = getText(e);
+  const values = getText(e);
+  span.innerHTML = values.text;
+  span.style.color = `#${values.color}`;
+  span.style.fontWeight = "bold";
 });
