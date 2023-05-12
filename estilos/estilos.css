@@ -9,6 +9,7 @@ div.ui-pdp-header__subtitle {
   position: relative;
   cursor: pointer;
   display: flex;
+  font-size: 1rem;
 }
 
 .data-value-sub {

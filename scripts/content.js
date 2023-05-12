@@ -41,16 +41,17 @@ function formateoNumero(numeroSinFormato) {
 
 async function logData() {
   // Get USD price
-  const response = await fetch(
-    "https://dolar-api-argentina.vercel.app/v1/dolares/blue"
-  );
-  const usd = await response.json();
+  const value = await chrome.storage.local.get(["usd_blue"]).then((value) => {
+    return value;
+  });
+  const usd = value.usd_blue;
+
   let priceTag = document.querySelector(
     ".ui-pdp-price__second-line .andes-money-amount__fraction"
   );
   if (priceTag != null) {
     priceTag = quitarFormatoNumero(priceTag.innerHTML);
-    priceTag = priceTag / usd.venta;
+    priceTag = priceTag / usd;
 
     // Select container
     const contenedor = document.querySelector(".ui-pdp-price__second-line");
@@ -73,7 +74,7 @@ async function logData() {
     // Tooltip para saber el dolar que se toma
     const tooltip = document.createElement("div");
     tooltip.classList.add("tooltip-text");
-    tooltip.innerHTML = `$${usd.venta}`;
+    tooltip.innerHTML = `$${usd}`;
     icon.appendChild(tooltip);
   }
   let numero = obtenerMLA();
