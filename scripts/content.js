@@ -41,10 +41,13 @@ function formateoNumero(numeroSinFormato) {
 
 async function logData() {
   // Get USD price
-  const value = await chrome.storage.local.get(["usd_blue"]).then((value) => {
+  const value = await chrome.storage.sync.get(["user_select"]).then((value) => {
     return value;
   });
-  const usd = value.usd_blue;
+
+  const getSelect = value.user_select;
+  const getKey = Object.keys(getSelect)[0];
+  const usd = getSelect[`${getKey}`];
 
   let priceTag = document.querySelector(
     ".ui-pdp-price__second-line .andes-money-amount__fraction"
