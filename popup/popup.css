@@ -11,22 +11,29 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  width: 400px;
+  width: 200px;
   background: #fcfcfc;
+  padding: 1vh 2vw;
+}
+
+h1 {
+  text-align: center;
+}
+
+main {
+  width: 100%;
 }
 
 .links {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  margin: 5vh 0;
+  align-items: center;
+  margin: 1vh 0;
 }
 
 .links a {
-  margin: 0px 1.5vw;
-}
-
-main {
-  height: 100%;
+  margin: 0.5vh 0;
 }
 
 a {
@@ -55,10 +62,12 @@ a:hover {
     "select save";
   grid-template-rows: 1fr 1fr;
   column-gap: 2vw;
+  margin: 5vh 0;
 }
 
-.value p {
+.value label {
   grid-area: divisa;
+  text-align: center;
 }
 
 #currency {
@@ -66,11 +75,30 @@ a:hover {
 }
 
 .value button {
-  width: 80%;
+  width: 100%;
   grid-area: save;
   background: linear-gradient(45deg, #65b864, #5a65c9);
   border: 0px;
-  border-radius: 5vh;
+  border-radius: 2vh;
   color: white;
   font-weight: bold;
+}
+
+select {
+  font-weight: bold;
+}
+
+option {
+  font-weight: bold;
+}
+
+option[value="usd_tur"] {
+  color: #d68235;
+}
+
+option[value="usd_of"] {
+  color: #3a8842;
+}
+option[value="usd_blue"] {
+  color: #5a65c9;
 }
