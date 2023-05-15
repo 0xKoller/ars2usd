@@ -4,6 +4,7 @@ async function getValues() {
   );
   const usdBlue = await response.json();
   chrome.storage.sync.set({ usd_blue: usdBlue.venta });
+  chrome.storage.sync.set({ user_select: usdBlue.venta });
 
   response = await fetch(
     "https://dolar-api-argentina.vercel.app/v1/dolares/oficial"

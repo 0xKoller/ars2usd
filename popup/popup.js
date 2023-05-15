@@ -15,8 +15,7 @@ const getKeyName = async () => {
     return value;
   });
   const getSelect = value.user_select;
-  const getKey = Object.keys(getSelect)[0];
-  return getKey;
+  return Object.keys(getSelect)[0];
 };
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -39,7 +38,6 @@ document.addEventListener("DOMContentLoaded", function () {
       if (select.options[i].value === e) {
         select.options[i].selected = true;
         for (let z = 0; z < elementos.length; z++) {
-          console.log(elementos[z]);
           if (elementos[z] === select.value) {
             select.style.color = colores[elementos[z]];
             break;
