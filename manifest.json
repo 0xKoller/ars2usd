@@ -2,8 +2,8 @@
   "manifest_version": 3,
   "name": "Ars2Usd",
   "description": "Equivalencia en USD del producto listado en MercadoLibre, información del vendedor y mejoras de estilos.",
-  "version": "2.0.1",
-  "permissions": ["storage", "tabs"],
+  "version": "2.0.2",
+  "permissions": ["storage"],
   "background": {
     "service_worker": "service_worker.js",
     "type": "module"

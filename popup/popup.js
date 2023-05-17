@@ -5,17 +5,18 @@ const saveOptions = async () => {
     .then((value) => {
       return value;
     });
-  chrome.storage.sync.set({ user_select: value });
+  const name = Object.keys(value)
+  chrome.storage.sync.set({currency: `${name}`})
+  chrome.storage.sync.set({ user_select: value[`${name}`] });
   location.reload();
   chrome.tabs.reload();
 };
 
 const getKeyName = async () => {
-  const value = await chrome.storage.sync.get(["user_select"]).then((value) => {
-    return value;
+  const value = await chrome.storage.sync.get().then((value) => {
+    return value.currency;
   });
-  const getSelect = value.user_select;
-  return Object.keys(getSelect)[0];
+  return value;
 };
 
 document.addEventListener("DOMContentLoaded", function () {
