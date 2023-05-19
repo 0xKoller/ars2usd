@@ -38,6 +38,26 @@ function formateoNumero(numeroSinFormato) {
   return numeroSinFormato.toLocaleString();
 }
 
+function separarTextoPorPipe(texto) {
+  const separador = "|";
+  const indicePipe = texto.indexOf(separador);
+  if (indicePipe !== -1) {
+    const cadena1 = texto.substring(0, indicePipe).trim();
+    const cadena2 = texto.substring(indicePipe + separador.length).trim();
+    return [cadena1, cadena2];
+  }
+  return [texto.trim(), ""]; // Si no se encuentra el separador, devuelve el texto completo en la primera cadena y una cadena vacía en la segunda.
+}
+
+function unidadesVendidasReales(unidadFicticia, unidadReal) {
+  const tachada = document.createElement("p");
+  tachada.innerText = unidadFicticia;
+  tachada.style.textDecoration = "line-through";
+  const nuevo = document.createElement("span");
+  nuevo.innerText = unidadReal;
+  return `${tachada} ${nuevo}`;
+}
+
 async function logData() {
   // Get USD price
   const value = await chrome.storage.sync.get().then((value) => {
@@ -86,11 +106,18 @@ async function logData() {
     );
     const dataItem = await responseUp.json();
     if (dataItem[0].code != 404) {
+      console.log(dataItem[0].body);
       let fechaHora = dataItem[0].body.last_updated;
       let fecha = new Date(fechaHora.replace("Z", ""));
       let fechaHoraSeparada = fechaHoraTextoASeparado(fecha);
       // Containter Vend+Act.
       const subtitle = document.querySelector("div.ui-pdp-header__subtitle");
+      const unitsSold = subtitle.querySelector(".ui-pdp-subtitle");
+      let [condition, units] = separarTextoPorPipe(unitsSold.innerHTML);
+      if (units != "") {
+        unitsSold.innerHTML = "";
+        unitsSold.innerHTML = `${condition} | <span style="text-decoration: line-through;">${units}</span> ${dataItem[0].body.sold_quantity} vendidos`;
+      }
 
       // Last Updt
       const lastUpdate = document.createElement("span");
