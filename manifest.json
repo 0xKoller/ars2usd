@@ -16,7 +16,8 @@
       "matches": [
         "https://www.mercadolibre.com.ar/*",
         "https://articulo.mercadolibre.com.ar/*",
-        "https://listado.mercadolibre.com.ar/*"
+        "https://listado.mercadolibre.com.ar/*",
+        "https://myaccount.mercadolibre.com.ar/*"
       ],
       "run_at": "document_idle",
       "js": ["scripts/content.js", "scripts/most_sold.js"],
