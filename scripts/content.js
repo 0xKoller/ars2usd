@@ -1,8 +1,7 @@
 function quitarFormatoNumero(numeroConFormato) {
   const strNumero = numeroConFormato.toString();
   const numeroSinFormato = strNumero.replace(/\D/g, "");
-  const numero = Number(numeroSinFormato);
-  return numero;
+  return Number(numeroSinFormato);
 }
 
 function fechaHoraTextoASeparado(fechaHoraTexto) {
@@ -44,9 +43,6 @@ async function logData() {
   const value = await chrome.storage.sync.get().then((value) => {
     return value.user_select;
   });
-
-  // const getSelect = value.user_select;
-  // const getKey = Object.keys(getSelect)[0];
   const usd = value;
 
   let priceTag = document.querySelector(
@@ -84,6 +80,7 @@ async function logData() {
   let dataSeller = "";
   if (numero != "null") {
     // Data product
+
     const responseUp = await fetch(
       `https://api.mercadolibre.com/items?ids=${numero}`
     );

@@ -5,9 +5,8 @@ const saveOptions = async () => {
     .then((value) => {
       return value;
     });
-  const name = Object.keys(value)
-  chrome.storage.sync.set({currency: `${name}`})
-  chrome.storage.sync.set({ user_select: value[`${name}`] });
+  chrome.storage.sync.set({ currency: `${Object.keys(value)}` });
+  chrome.storage.sync.set({ user_select: value[`${Object.keys(value)}`] });
   location.reload();
   chrome.tabs.reload();
 };
@@ -21,32 +20,29 @@ const getKeyName = async () => {
 
 document.addEventListener("DOMContentLoaded", function () {
   const select = document.getElementById("currency");
-  const setElements = getKeyName().then((e) => {
-    let blue = new Option("Blue", "usd_blue");
-    let oficial = new Option("Oficial", "usd_of");
-    let turista = new Option("Turista", "usd_tur");
-    // Este sistema de colores y demas, no es el mas optimos pero.. it gets the job done
-    const colores = {
-      usd_of: "#3a8842",
-      usd_blue: "#5a65c9",
-      usd_tur: "#d68235",
-    };
-    const elementos = Object.keys(colores);
-    select.appendChild(blue);
-    select.appendChild(oficial);
-    select.appendChild(turista);
-    for (let i = 0; i < select.options.length; i++) {
-      if (select.options[i].value === e) {
-        select.options[i].selected = true;
-        for (let z = 0; z < elementos.length; z++) {
-          if (elementos[z] === select.value) {
-            select.style.color = colores[elementos[z]];
-            break;
-          }
-        }
-        break;
+  const colores = {
+    usd_of: "#3a8842",
+    usd_blue: "#5a65c9",
+    usd_tur: "#d68235",
+  };
+  const elementos = Object.keys(colores);
+  getKeyName().then((e) => {
+    const options = [
+      { label: "Blue", value: "usd_blue" },
+      { label: "Oficial", value: "usd_of" },
+      { label: "Turista", value: "usd_tur" },
+    ];
+    options.forEach((option) => {
+      const { label, value } = option;
+      select.appendChild(new Option(label, value));
+    });
+    select.value = e;
+    elementos.forEach((elemento) => {
+      if (elemento === select.value) {
+        select.style.color = colores[elemento];
+        return;
       }
-    }
+    });
   });
 });
 
