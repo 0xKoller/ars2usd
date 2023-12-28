@@ -12,6 +12,8 @@
 
 [🐛Bugs & Nuevas Funcionalidades.](#bugs--nuevas-funcionalidades)
 
+[🔐Políticas de privacidad.](#política-de-privacidad-para-ars2usd)
+
 [![Invitame un café en cafecito.app](https://cdn.cafecito.app/imgs/buttons/button_5.svg)](https://cafecito.app/0xkoller)
 
 ## Descripción
