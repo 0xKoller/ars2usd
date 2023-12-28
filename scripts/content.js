@@ -106,165 +106,166 @@ async function logData() {
     );
     const dataItem = await responseUp.json();
     if (dataItem[0].code != 404) {
-      console.log(dataItem[0].body);
-      let fechaHora = dataItem[0].body.last_updated;
-      let fecha = new Date(fechaHora.replace("Z", ""));
-      let fechaHoraSeparada = fechaHoraTextoASeparado(fecha);
-      // Containter Vend+Act.
-      const subtitle = document.querySelector("div.ui-pdp-header__subtitle");
-      const unitsSold = subtitle.querySelector(".ui-pdp-subtitle");
-      let [condition, units] = separarTextoPorPipe(unitsSold.innerHTML);
-      if (units != "") {
-        unitsSold.innerHTML = "";
-        unitsSold.innerHTML = `${condition} | <span style="text-decoration: line-through;">${units}</span> ${dataItem[0].body.sold_quantity} vendidos`;
-      }
+      // console.log(dataItem[0].body);
+      // let fechaHora = dataItem[0].body.last_updated;
+      // let fecha = new Date(fechaHora.replace("Z", ""));
+      // let fechaHoraSeparada = fechaHoraTextoASeparado(fecha);
+      // // Containter Vend+Act.
+      // const subtitle = document.querySelector("div.ui-pdp-header__subtitle");
+      // const unitsSold = subtitle.querySelector(".ui-pdp-subtitle");
+      // let [condition, units] = separarTextoPorPipe(unitsSold.innerHTML);
+      // if (units != "") {
+      //   unitsSold.innerHTML = "";
+      //   unitsSold.innerHTML = `${condition} | <span style="text-decoration: line-through;">${units}</span> ${dataItem[0].body.sold_quantity} vendidos`;
+      // }
 
-      // Last Updt
-      const lastUpdate = document.createElement("span");
-      lastUpdate.className = "ui-pdp-subtitle";
-      lastUpdate.innerHTML = `Ult. Actualización: ${fechaHoraSeparada.fecha} - ${fechaHoraSeparada.hora}`;
-      subtitle.appendChild(lastUpdate);
+      // // Last Updt
+      // const lastUpdate = document.createElement("span");
+      // lastUpdate.className = "ui-pdp-subtitle";
+      // lastUpdate.innerHTML = `Ult. Actualización: ${fechaHoraSeparada.fecha} - ${fechaHoraSeparada.hora}`;
+      // subtitle.appendChild(lastUpdate);
 
       // Info seller
-      const responseSeller = await fetch(
-        `https://api.mercadolibre.com/sites/MLA/search?seller_id=${dataItem[0].body.seller_id}`
-      );
-      dataSeller = await responseSeller.json();
+      // const responseSeller = await fetch(
+      //   `https://api.mercadolibre.com/sites/MLA/search?seller_id=${dataItem[0].body.seller_id}`
+      // );
+      // dataSeller = await responseSeller.json();
     } else {
-      const getNickName = document.querySelector("div.ui-box-component");
-      const getLink = getNickName.querySelector("a.ui-pdp-media__action");
-      let url = getLink.href;
-      const indexSlash = url.lastIndexOf("/");
-      let indexQuestion = url.lastIndexOf("?");
-      if (indexQuestion === -1) {
-        indexQuestion = url.length;
-      }
-      const nickname = url.substring(indexSlash + 1, indexQuestion);
-      const responseSeller = await fetch(
-        `https://api.mercadolibre.com/sites/MLA/search?nickname=${nickname}`
-      );
-      dataSeller = await responseSeller.json();
+      // const getNickName = document.querySelector("div.ui-box-component");
+      // const getLink = getNickName.querySelector("a.ui-pdp-media__action");
+      // let url = getLink.href;
+      // const indexSlash = url.lastIndexOf("/");
+      // let indexQuestion = url.lastIndexOf("?");
+      // if (indexQuestion === -1) {
+      //   indexQuestion = url.length;
+      // }
+      // const nickname = url.substring(indexSlash + 1, indexQuestion);
+      // const responseSeller = await fetch(
+      //   `https://api.mercadolibre.com/sites/MLA/search?nickname=${nickname}`
+      // );
+      // dataSeller = await responseSeller.json();
     }
     // Container seller
-    const box = document.querySelector(".ui-seller-info");
+    // const box = document.querySelector(".ui-seller-info");
 
-    const sellerPlus = document.createElement("div");
-    sellerPlus.classList.add("seller-plus");
+    // const sellerPlus = document.createElement("div");
+    // sellerPlus.classList.add("seller-plus");
 
-    // Seller name
-    const seller_name = document.createElement("div");
-    seller_name.classList.add("seller-name");
-    seller_name.innerHTML = `<p  class="data-title">Nombre</p><p> ${dataSeller.seller.nickname}</p>`;
+    // // Seller name
+    // const seller_name = document.createElement("div");
+    // seller_name.classList.add("seller-name");
+    // seller_name.innerHTML = `<p  class="data-title">Nombre</p><p> ${dataSeller.seller.nickname}</p>`;
 
-    // Seller loc
-    const seller_loc = document.createElement("div");
-    seller_loc.classList.add("seller-name");
-    // Primera variante
-    if (dataItem[0].code != 404) {
-      seller_loc.innerHTML = `<p  class="data-title">Ubicación</p><p> ${dataItem[0].body.seller_address.city.name}, ${dataItem[0].body.seller_address.state.name}</p>`;
-    } else {
-      seller_loc.innerHTML = `<p  class="data-title">Ubicación</p><p> ${dataSeller.results[0].seller_address.city.name}, ${dataSeller.results[0].seller_address.state.name}</p>`;
-    }
+    // // Seller loc
+    // const seller_loc = document.createElement("div");
+    // seller_loc.classList.add("seller-name");
+    // // Primera variante
+    // if (dataItem[0].code != 404) {
+    //   seller_loc.innerHTML = `<p  class="data-title">Ubicación</p><p> ${dataItem[0].body.seller_address.city.name}, ${dataItem[0].body.seller_address.state.name}</p>`;
+    // } else {
+    //   seller_loc.innerHTML = `<p  class="data-title">Ubicación</p><p> ${dataSeller.results[0].seller_address.city.name}, ${dataSeller.results[0].seller_address.state.name}</p>`;
+    // }
 
-    // Seller registered @
-    const seller_registered = document.createElement("div");
-    seller_registered.classList.add("seller-name");
-    const seller_registered_date = fechaHoraTextoASeparado(
-      dataSeller.seller.registration_date
-    );
-    seller_registered.innerHTML = `<p>Registrado desde el ${seller_registered_date.fecha} a las ${seller_registered_date.hora}</p>`;
+    // // Seller registered @
+    // const seller_registered = document.createElement("div");
+    // seller_registered.classList.add("seller-name");
+    // const seller_registered_date = fechaHoraTextoASeparado(
+    //   dataSeller.seller.registration_date
+    // );
+    // seller_registered.innerHTML = `<p>Registrado desde el ${seller_registered_date.fecha} a las ${seller_registered_date.hora}</p>`;
 
-    const periodo = dataSeller.seller.seller_reputation.metrics.sales.period;
+    // console.log("info vendedor",dataSeller);
+    // // const periodo = dataSeller.seller.seller_reputation.metrics.sales.period;
 
-    const historic = document.createElement("div");
-    historic.classList.add("data");
+    // const historic = document.createElement("div");
+    // historic.classList.add("data");
 
     // Calc Percentages
-    let per_claim = 0;
-    let per_cancelled_period = 0;
-    let per_completed = 0;
-    let per_cancelled = 0;
-    if (dataSeller.seller.seller_reputation.metrics.sales.completed > 0) {
-      per_claim =
-        (dataSeller.seller.seller_reputation.metrics.claims.value * 100) /
-        dataSeller.seller.seller_reputation.metrics.sales.completed;
-      per_cancelled_period =
-        (dataSeller.seller.seller_reputation.metrics.cancellations.value *
-          100) /
-        dataSeller.seller.seller_reputation.metrics.sales.completed;
-      per_completed =
-        (dataSeller.seller.seller_reputation.transactions.completed * 100) /
-        dataSeller.seller.seller_reputation.transactions.total;
-      per_cancelled =
-        (dataSeller.seller.seller_reputation.transactions.canceled * 100) /
-        dataSeller.seller.seller_reputation.transactions.total;
-    }
+    // let per_claim = 0;
+    // let per_cancelled_period = 0;
+    // let per_completed = 0;
+    // let per_cancelled = 0;
+    // if (dataSeller.seller.seller_reputation.metrics.sales.completed > 0) {
+    //   per_claim =
+    //     (dataSeller.seller.seller_reputation.metrics.claims.value * 100) /
+    //     dataSeller.seller.seller_reputation.metrics.sales.completed;
+    //   per_cancelled_period =
+    //     (dataSeller.seller.seller_reputation.metrics.cancellations.value *
+    //       100) /
+    //     dataSeller.seller.seller_reputation.metrics.sales.completed;
+    //   per_completed =
+    //     (dataSeller.seller.seller_reputation.transactions.completed * 100) /
+    //     dataSeller.seller.seller_reputation.transactions.total;
+    //   per_cancelled =
+    //     (dataSeller.seller.seller_reputation.transactions.canceled * 100) /
+    //     dataSeller.seller.seller_reputation.transactions.total;
+    // }
 
-    historic.innerHTML = `
-    <p class="data-title"> Estadísticas de ${periodo.replace(/\D/g, "")} días
-    </p>
-    <div class="historic-container">
-      <div class="year">
-      <div>
-      <p class="data-name">Ventas: <p class="data-value">${formateoNumero(
-        dataSeller.seller.seller_reputation.metrics.sales.completed
-      )}</p></p>
-      </div>
-      <div>
-      <p class="data-name">Reclamos: <p class="data-value">${formateoNumero(
-        dataSeller.seller.seller_reputation.metrics.claims.value
-      )}</p>
-      <p class="data-value-sub"> ≈ ${per_claim.toFixed(2)}
-      %
-      </p>
-      </p>
-      </div>
-      <div>
-      <p class="data-name">Cancelaciones: <p class="data-value">${formateoNumero(
-        dataSeller.seller.seller_reputation.metrics.cancellations.value
-      )}</p>
-      <p class="data-value-sub"> ≈ ${per_cancelled_period.toFixed(2)}
-      %
-      </p>
-      </p>
-    </div>
-      </div>
+    // historic.innerHTML = `
+    // <p class="data-title"> Estadísticas de ${periodo.replace(/\D/g, "")} días
+    // </p>
+    // <div class="historic-container">
+    //   <div class="year">
+    //   <div>
+    //   <p class="data-name">Ventas: <p class="data-value">${formateoNumero(
+    //     dataSeller.seller.seller_reputation.metrics.sales.completed
+    //   )}</p></p>
+    //   </div>
+    //   <div>
+    //   <p class="data-name">Reclamos: <p class="data-value">${formateoNumero(
+    //     dataSeller.seller.seller_reputation.metrics.claims.value
+    //   )}</p>
+    //   <p class="data-value-sub"> ≈ ${per_claim.toFixed(2)}
+    //   %
+    //   </p>
+    //   </p>
+    //   </div>
+    //   <div>
+    //   <p class="data-name">Cancelaciones: <p class="data-value">${formateoNumero(
+    //     dataSeller.seller.seller_reputation.metrics.cancellations.value
+    //   )}</p>
+    //   <p class="data-value-sub"> ≈ ${per_cancelled_period.toFixed(2)}
+    //   %
+    //   </p>
+    //   </p>
+    // </div>
+    //   </div>
 
-    </div>
-    <p class="data-title"> Histórico
-    </p>
-    <div class="historic-container">
-      <div class="all-time"><div>
-      <p class="data-name">Transac. Realizadas: <p class="data-value">${formateoNumero(
-        dataSeller.seller.seller_reputation.transactions.total
-      )}</p></p>
-      </div>
-      <div>
-      <p class="data-name">Transac. Completadas: <p class="data-value">${formateoNumero(
-        dataSeller.seller.seller_reputation.transactions.completed
-      )}</p>
-      <p class="data-value-sub"> ≈ ${per_completed.toFixed(2)}
-      %
-      </p>
-      </p>
-      </div>
-      <div>
-      <p class="data-name">Transac. Canceladas: <p class="data-value">${formateoNumero(
-        dataSeller.seller.seller_reputation.transactions.canceled
-      )}</p>
-      <p class="data-value-sub"> ≈ ${per_cancelled.toFixed(2)}
-      %
-      </p>
-      </p>
-    </div>
-    </div>
-    `;
+    // </div>
+    // <p class="data-title"> Histórico
+    // </p>
+    // <div class="historic-container">
+    //   <div class="all-time"><div>
+    //   <p class="data-name">Transac. Realizadas: <p class="data-value">${formateoNumero(
+    //     dataSeller.seller.seller_reputation.transactions.total
+    //   )}</p></p>
+    //   </div>
+    //   <div>
+    //   <p class="data-name">Transac. Completadas: <p class="data-value">${formateoNumero(
+    //     dataSeller.seller.seller_reputation.transactions.completed
+    //   )}</p>
+    //   <p class="data-value-sub"> ≈ ${per_completed.toFixed(2)}
+    //   %
+    //   </p>
+    //   </p>
+    //   </div>
+    //   <div>
+    //   <p class="data-name">Transac. Canceladas: <p class="data-value">${formateoNumero(
+    //     dataSeller.seller.seller_reputation.transactions.canceled
+    //   )}</p>
+    //   <p class="data-value-sub"> ≈ ${per_cancelled.toFixed(2)}
+    //   %
+    //   </p>
+    //   </p>
+    // </div>
+    // </div>
+    // `;
 
-    box.appendChild(sellerPlus);
-    sellerPlus.appendChild(seller_name);
-    sellerPlus.appendChild(seller_loc);
-    sellerPlus.appendChild(historic);
-    sellerPlus.appendChild(seller_registered);
+    // box.appendChild(sellerPlus);
+    // sellerPlus.appendChild(seller_name);
+    // sellerPlus.appendChild(seller_loc);
+    // sellerPlus.appendChild(historic);
+    // sellerPlus.appendChild(seller_registered);
   }
 }
 
@@ -275,7 +276,7 @@ function styling() {
 
   // Nombre user y pic
   const user = document.querySelector("span.nav-header-usermenu-wrapper");
-  user.style.alignItems = "center";
+  // user.style.alignItems = "center";
 
   // Barra de opciones del user
   const userOptions = document.querySelector("nav#nav-header-menu");
