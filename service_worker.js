@@ -15,7 +15,7 @@ async function getValues() {
   chrome.storage.sync.set({ usd_of: usdOf.venta });
 
   response = await fetch(
-    "https://dolarapi.com/v1/dolares/solidario"
+    "https://dolarapi.com/v1/dolares/tarjeta"
   );
   const usdTur = await response.json();
   chrome.storage.sync.set({ usd_tur: usdTur.venta });

@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const options = [
       { label: "Blue", value: "usd_blue" },
       { label: "Oficial", value: "usd_of" },
-      { label: "Turista", value: "usd_tur" },
+      { label: "Tarjeta", value: "usd_tur" },
     ];
     options.forEach((option) => {
       const { label, value } = option;
