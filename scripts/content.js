@@ -106,18 +106,11 @@ async function logData() {
     );
     const dataItem = await responseUp.json();
     if (dataItem[0].code != 404) {
-      console.log(dataItem[0].body);
       let fechaHora = dataItem[0].body.last_updated;
       let fecha = new Date(fechaHora.replace("Z", ""));
       let fechaHoraSeparada = fechaHoraTextoASeparado(fecha);
       // Containter Vend+Act.
       const subtitle = document.querySelector("div.ui-pdp-header__subtitle");
-      const unitsSold = subtitle.querySelector(".ui-pdp-subtitle");
-      let [condition, units] = separarTextoPorPipe(unitsSold.innerHTML);
-      if (units != "") {
-        unitsSold.innerHTML = "";
-        unitsSold.innerHTML = `${condition} | <span style="text-decoration: line-through;">${units}</span> ${dataItem[0].body.sold_quantity} vendidos`;
-      }
 
       // Last Updt
       const lastUpdate = document.createElement("span");
@@ -145,6 +138,7 @@ async function logData() {
       );
       dataSeller = await responseSeller.json();
     }
+
     // Container seller
     const box = document.querySelector(".ui-seller-info");
 
